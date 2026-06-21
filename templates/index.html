@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="card total-card">
+        <h2>Total Expenses</h2>
+        <h1>₹ {{ total }}</h1>
+    </div>
+
+    <div class="card income-card">
+        <h2>Total Records</h2>
+        <h1>{{ expenses|length }}</h1>
+    </div>
+
+</div>
+
+<div class="search-section">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search expenses...">
+
+</div>
+
+<table id="expenseTable">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for expense in expenses %}
+
+        <tr>
+
+            <td>{{ expense.title }}</td>
+
+            <td>₹ {{ expense.amount }}</td>
+
+            <td>{{ expense.category }}</td>
+
+            <td>{{ expense.date.strftime('%d-%m-%Y') }}</td>
+
+            <td>
+                <a href="/edit/{{ expense.id }}">Edit</a>
+                |
+                <a href="/delete/{{ expense.id }}">Delete</a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<div class="chart-container">
+
+    <canvas id="expenseChart"></canvas>
+
+</div>
+
+<script>
+
+    window.chartLabels = {{ labels | tojson }};
+    window.chartAmounts = {{ amounts | tojson }};
+
+</script>
+
+{% endblock %}

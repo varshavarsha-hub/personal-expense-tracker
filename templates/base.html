@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Expense Tracker</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <h1>Expense Tracker</h1>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/add">Add Expense</a>
+
+        </div>
+        <a href="/monthly-summary">
+    Monthly Summary
+</a>
+<a href="/export-pdf">
+    Export PDF
+</a>
+        <button id="darkModeBtn">
+            🌙 Dark Mode
+        </button>
+
+    </nav>
+
+    <!-- Main Content -->
+
+    <div class="main-container">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+    <!-- JavaScript -->
+    <script
+    src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+</body>
+
+</html>

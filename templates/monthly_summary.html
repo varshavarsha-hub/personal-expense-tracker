@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Monthly Expense Summary</h1>
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Month</th>
+            <th>Total Expense</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for month, total in monthly_data.items() %}
+
+        <tr>
+
+            <td>{{ month }}</td>
+
+            <td>₹ {{ total }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
